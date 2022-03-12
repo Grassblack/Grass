@@ -33,12 +33,12 @@
     </script>
     sha256
     <div id="encodedtext"></div>
-    <script src="https://gist.github.com/keitakn/5f9d1f018dd5661998ea3fbe98621af9.js">
-    /*async function encodeSHA256(text){
+    <script>
+    async function encodeSHA256(text){
         const uint8  = new TextEncoder().encode(text)
         const digest = await crypto.subtle.digest('SHA-256', uint8)
         return Array.from(new Uint8Array(digest)).map(v => v.toString(16).padStart(2,'0')).join('')
-    };*/
+    };
     const encodedtext = document.getElementById('encodedtext');
     encodedtext.innerHTML = encodeSHA256("this is a hashed text")
     </script>
