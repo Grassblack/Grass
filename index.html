@@ -17,7 +17,7 @@
     const subscriberCount= document.getElementById('subscriberCount');
     const viewCount = document.getElementById('viewCount');
     
-    let getdata = () => {
+    let getyoutubedata() => {
         fetch(`https://www.googleapis.com/youtube/v3/channels?part=statistics&id=${Userid}&key=${APIKey}`)
         .then(response => {
             return response.json()
@@ -29,7 +29,18 @@
              
         })
     }
-   getdata();
+    getyoutubedata();
+    </script>
+    sha256
+    <div id="encodedtext"></div>
+    <script>
+        var SHA256 = require("crypto-js/sha256");
+        const encodeSHA256 = (str) => {
+            const hash = SHA256(str);
+            return hash.toString();
+        }
+        const encodedtext = document.getElementById('encodedtext');
+        encodedtext.innerHTML = encodeSHA256("this is a hashed text")
     </script>
 </body>
 </html>
