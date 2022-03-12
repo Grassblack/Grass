@@ -10,16 +10,13 @@
     <div id="subscriberCount"></div>
     YouTube Video Views
     <div id="viewCount"></div>
-    YouTube Video Count
-    <div id="videoCount"></div>
     <script>
     
     const APIKey = 'AIzaSyCMgDYQReeMgCZVfHKTQ0zMWzRy28yW1tQ';
     const Userid = 'UCwDx6vDQAWbhu-Z4wT79aug';
     const subscriberCount= document.getElementById('subscriberCount');
     const viewCount = document.getElementById('viewCount');
-    const videoCount = document.getElementById('videoCount');
-   
+    
     let getdata = () => {
         fetch(`https://www.googleapis.com/youtube/v3/channels?part=statistics&id=${Userid}&key=${APIKey}`)
         .then(response => {
@@ -29,8 +26,7 @@
             console.log(data);
             subscriberCount.innerHTML = data["items"][0].statistics.subscriberCount;
             viewCount.innerHTML = data["items"][0].statistics.viewCount;
-            videoCount.innerHTML = data["items"][0].statistics.videoCount;
-            
+             
         })
     }
    getdata();
