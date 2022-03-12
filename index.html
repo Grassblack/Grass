@@ -6,18 +6,16 @@
     <title>YouTube API</title>
 </head>
 <body>
-    YouTube Subscribers
-    <div id="subscriberCount"></div>
-    YouTube Video Views
-    <div id="viewCount"></div>
+    YouTube Subscribers: <div id="subscriberCount"></div>
+    YouTube Video Views: <div id="viewCount"></div>
     <script>
-    
+    //https://codeconia.com/2021/05/08/how-to-get-youtube-subscriber-views-and-video-counts-using-javascript/
     const APIKey = 'AIzaSyCMgDYQReeMgCZVfHKTQ0zMWzRy28yW1tQ';
     const Userid = 'UCwDx6vDQAWbhu-Z4wT79aug';
     const subscriberCount= document.getElementById('subscriberCount');
     const viewCount = document.getElementById('viewCount');
     
-    let getyoutubedata() => {
+    let getyoutubedata = () => {
         fetch(`https://www.googleapis.com/youtube/v3/channels?part=statistics&id=${Userid}&key=${APIKey}`)
         .then(response => {
             return response.json()
