@@ -24,7 +24,7 @@
     const viewCount = document.getElementById("viewCount");
     
     let getchanneldata = (part) => {
-        fetch("https://www.googleapis.com/youtube/v3/channels?part=${part}&id=${Userid}&key=${APIKey}")
+        fetch(`https://www.googleapis.com/youtube/v3/channels?part=${part}&id=${Userid}&key=${APIKey}`)
         .then(response => {
             return response.json()
         })
