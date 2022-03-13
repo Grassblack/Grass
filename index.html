@@ -23,14 +23,16 @@
     const subscriberCount= document.getElementById("subscriberCount");
     const viewCount = document.getElementById("viewCount");
     
-    let getchanneldata = (part, item, element) => {
+    let getchanneldata = (part, ...items) => {
         fetch(`https://www.googleapis.com/youtube/v3/channels?part=${part}&id=${Userid}&key=${APIKey}`)
         .then(response => {
             return response.json()
         })
         .then(data => {
-            console.log(data);
-            element.innerHTML = data["items"][0][part][item]
+            //console.log(data);
+            items.forEach(function(i){
+                i[1].innerHTML = data["items"][0][part][i[0]]
+            })
             return
             /*
             subscriberCount.innerHTML = data["items"][0].statistics.subscriberCount;
@@ -40,9 +42,8 @@
         })
     }
     
-    getchanneldata("snippet", "title", title);
-    getchanneldata("statistics", "subscriberCount", subscriberCount);
-    getchanneldata("statistics", "viewCount", viewCount);
+    getchanneldata("snippet", ["title", title]);
+    getchanneldata("statistics", ["subscriberCount", subscriberCount], ["viewCount", viewCount]);
     /*
     title.innerHTML = snip.title;
     subscriberCount.innerHTML = stat.subscriberCount;
