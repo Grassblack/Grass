@@ -1,55 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YouTube API</title>
-</head>
-<body>
-    Youtube User Name: 
-    <span id="title"></span>
-    <br>
-    Subscribers: 
-    <span id="subscriberCount"></span>
-    <br>
-    Views: 
-    <span id="viewCount"></span>
-    <script>
-    //https://codeconia.com/2021/05/08/how-to-get-youtube-subscriber-views-and-video-counts-using-javascript/
-    const APIKey = "AIzaSyCMgDYQReeMgCZVfHKTQ0zMWzRy28yW1tQ";
-    const Userid = "UCwDx6vDQAWbhu-Z4wT79aug";
-        
-    const title = document.getElementById("title");
-    const subscriberCount= document.getElementById("subscriberCount");
-    const viewCount = document.getElementById("viewCount");
-    
-    let getchanneldata = (part, ...items) => {
-        fetch(`https://www.googleapis.com/youtube/v3/channels?part=${part}&id=${Userid}&key=${APIKey}`)
-        .then(response => {
-            return response.json();
-        })
-        .then(data => {
-            //console.log(data);
-            items.forEach(function(i){
-                i[1].innerHTML = data["items"][0][part][i[0]];
-            })
-            return;
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>YouTube API</title>
+    </head>
+    <body>
+        Youtube User Name: 
+        <span id="title"></span>
+        <br>
+        Subscribers: 
+        <span id="subscriberCount"></span>
+        <br>
+        Views: 
+        <span id="viewCount"></span>
+        <script>
+            //https://codeconia.com/2021/05/08/how-to-get-youtube-subscriber-views-and-video-counts-using-javascript/
+            const APIKey = "AIzaSyCMgDYQReeMgCZVfHKTQ0zMWzRy28yW1tQ";
+            const Userid = "UCwDx6vDQAWbhu-Z4wT79aug";
+            
+            const title = document.getElementById("title");
+            const subscriberCount= document.getElementById("subscriberCount");
+            const viewCount = document.getElementById("viewCount");
+            
+            let getchanneldata = (...i) => {
+                const part = i.map(j => j[0]).join(",")
+                fetch(`https://www.googleapis.com/youtube/v3/channels?part=${part}&id=${Userid}&key=${APIKey}`)
+                .then(response => {
+                    return response.json();
+                })
+                .then(data => {
+                    //console.log(i);
+                    i.forEach(function(j){
+                        j[2].innerHTML = data["items"][0][j[0]][j[1]];
+                    })
+                    return;
+                })
+            }
+            
+            getchanneldata(["snippet", "title", title],
+                           ["statistics", "subscriberCount", subscriberCount],
+                           ["statistics", "viewCount", viewCount]
+            );
             /*
-            subscriberCount.innerHTML = data["items"][0].statistics.subscriberCount;
-            viewCount.innerHTML = data["items"][0].statistics.viewCount;
+            title.innerHTML = snip.title;
+            subscriberCount.innerHTML = stat.subscriberCount;
+            viewCount.innerHTML = stat.viewCount;
             */
-             
-        })
-    }
-    
-    getchanneldata("snippet", ["title", title]);
-    getchanneldata("statistics", ["subscriberCount", subscriberCount], ["viewCount", viewCount]);
-    /*
-    title.innerHTML = snip.title;
-    subscriberCount.innerHTML = stat.subscriberCount;
-    viewCount.innerHTML = stat.viewCount;
-    */
-    
-    </script>
-</body>
+            
+        </script>
+    </body>
 </html>
