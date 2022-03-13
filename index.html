@@ -30,7 +30,7 @@
         })
         .then(data => {
             console.log(data);
-            element = data["items"][0][part][item]
+            element.innerHTML = data["items"][0][part][item]
             return
             /*
             subscriberCount.innerHTML = data["items"][0].statistics.subscriberCount;
@@ -40,9 +40,9 @@
         })
     }
     
-    getchanneldata("snippet", "title", title.innerHTML);
-    getchanneldata("statistics", "subscriberCount", subscriberCount.innerHTML);
-    getchanneldata("statistics", "viewCount", viewCount.innerHTML);
+    getchanneldata("snippet", "title", title);
+    getchanneldata("statistics", "subscriberCount", subscriberCount);
+    getchanneldata("statistics", "viewCount", viewCount);
     /*
     title.innerHTML = snip.title;
     subscriberCount.innerHTML = stat.subscriberCount;
