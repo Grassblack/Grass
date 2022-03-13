@@ -26,10 +26,8 @@
             let getchanneldata = (...i) => {
                 const part = i.map(j => j[0]).join(",")
                 fetch(`https://www.googleapis.com/youtube/v3/channels?part=${part}&id=${Userid}&key=${APIKey}`)
-                .then(response => {
-                    return response.json();
-                })
-                .then(data => {
+                    .then(response => response.json())
+                    .then(data => {
                     //console.log(i);
                     i.forEach(function(j){
                         j[2].innerHTML = data["items"][0][j[0]][j[1]];
