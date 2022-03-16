@@ -1,0 +1,36 @@
+body{
+    background-color: #000000;
+    color: #ffffff;
+    font-family: url("Verdana_Bold.ttf");
+    text-shadow: 0px 0px 10px #ffffff;
+}
+
+a{
+    color: #efefef;
+    font-size: 18px;
+    text-decoration: none;
+    text-shadow: 0px 0px;
+}
+
+a:visited{
+    color: #bfbfbf;
+}
+
+a:active{
+    color: #7f7f7f;
+}
+
+h1{
+    text-align: center;
+    font-size: 72px;
+}
+
+h2{
+    margin-left: 20px;
+    font-size: 36px;
+}
+
+h3{
+    margin-left: 40px;
+    font-size: 24px;
+}
